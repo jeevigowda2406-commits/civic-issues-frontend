@@ -1,0 +1,36 @@
+.issues-list {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  font-family: "Roboto", sans-serif;
+}
+
+.issues-list h2 {
+  text-align: center;
+  color: #003366;
+}
+
+.issues-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.issues-list li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.status-pending {
+  color: red;
+}
+
+.status-in\ progress {
+  color: orange;
+}
+
+.status-resolved {
+  color: green;
+}
