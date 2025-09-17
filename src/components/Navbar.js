@@ -1,43 +1,13 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
+import React from "react";
+import "./Navbar.css";
 
-export default function Navbar() {
-  const { user, logout } = useContext(AuthContext);
-  const nav = useNavigate();
-
-  function handleLogout() {
-    logout();
-    nav("/login");
-  }
-
+function Navbar() {
   return (
-    <nav style={{
-      background: "#0b74de",
-      color: "white",
-      padding: "10px 20px",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center"
-    }}>
-      <div>
-        <Link to="/" style={{ color: "white", marginRight: 12, textDecoration: "none" }}>Report</Link>
-        <Link to="/issues" style={{ color: "white", textDecoration: "none" }}>Issues</Link>
-      </div>
-
-      <div>
-        {user ? (
-          <>
-            <span style={{ marginRight: 12 }}>{user.email}</span>
-            <button onClick={handleLogout} style={{ padding: "6px 10px" }}>Logout</button>
-          </>
-        ) : (
-          <>
-            <Link to="/signup" style={{ color: "white", marginRight: 12, textDecoration: "none" }}>Signup</Link>
-            <Link to="/login" style={{ color: "white", textDecoration: "none" }}>Login</Link>
-          </>
-        )}
-      </div>
+    <nav className="navbar">
+      <img src="/logo.png" alt="Indian Government Logo" className="logo" />
+      <h1>Digital Civic Issues Portal</h1>
     </nav>
   );
 }
+
+export default Navbar;

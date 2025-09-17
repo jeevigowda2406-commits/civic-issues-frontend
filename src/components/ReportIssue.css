@@ -1,0 +1,48 @@
+.report-issue {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
+}
+
+.report-issue h2 {
+  text-align: center;
+  color: #003366;
+}
+
+.report-issue form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.report-issue textarea {
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.report-issue input[type="text"],
+.report-issue input[type="file"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.report-issue button {
+  padding: 10px;
+  background: #003366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.report-issue button:hover {
+  background: #0055aa;
+}

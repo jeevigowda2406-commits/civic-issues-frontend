@@ -1,35 +1,49 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
-  function handleSignup() {
-    if (!email || !password) {
-      alert("Please fill email and password");
+  const handleSignup = (e) => {
+    e.preventDefault();
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userExists = users.find(u => u.email === email);
+
+    if (userExists) {
+      alert("User already exists!");
       return;
     }
-    const users = JSON.parse(localStorage.getItem("civic_users") || "[]");
-    if (users.find((u) => u.email === email)) {
-      alert("User already exists, please login");
-      return;
-    }
+
     users.push({ email, password });
-    localStorage.setItem("civic_users", JSON.stringify(users));
-    alert("Signup success. Please login.");
-    nav("/login");
-  }
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Signup successful! Please login.");
+    navigate("/login");
+  };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Signup</h2>
-      <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} style={{width:"100%", padding:8}} />
-      <br/><br/>
-      <input placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} style={{width:"100%", padding:8}} />
-      <br/><br/>
-      <button onClick={handleSignup} style={{padding:"8px 16px"}}>Create account</button>
+      <form onSubmit={handleSignup}>
+        <input
+          type="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Signup</button>
+      </form>
     </div>
   );
 }
+
+export default Signup;
